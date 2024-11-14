@@ -1,0 +1,50 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  GenerateImageFunctionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: GenerateImageFunctionPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              # Tillatelse til å bruke Bedrock for bildegenerering
+              - Effect: Allow
+                Action:
+                  - bedrock:InvokeModel
+                Resource: "*"  # Juster om du ønsker mer spesifikk ressursbegrensning
+
+              # Tillatelse til å laste opp objekter til en spesifikk S3-sti
+              - Effect: Allow
+                Action:
+                  - s3:PutObject
+                Resource: "arn:aws:s3:::pgr301-couch-explorers/21/*"  # Kun spesifikk sti i S3-bucketen
+
+  GenerateImageFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: hello_world/
+      Handler: app.lambda_handler
+      Runtime: python3.8  # Eller python3.9, avhengig av runtime
+      MemorySize: 512 
+      Timeout: 200  # Juster timeout om nødvendig
+      Environment:
+        Variables:
+          BUCKET_NAME: "pgr301-couch-explorers"
+          CANDIDATE_NUMBER: "21"
+      Role: !GetAtt GenerateImageFunctionRole.Arn  # Refererer til den tilpassede rollen
+      Events:
+        GenerateImageAPI:
+          Type: Api
+          Properties:
+            Path: /generate-image
+            Method: POST
