@@ -18,7 +18,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'  # Juster til riktig Python-versjon for SAM-applikasjonen din
+          python-version: '3.9'  # Juster til riktig Python-versjon for SAM-applikasjonen din
 
       # Sett opp AWS SAM CLI
       - name: Set up SAM CLI
@@ -42,7 +42,7 @@ jobs:
           sam deploy --no-confirm-changeset \
                      --no-fail-on-empty-changeset \
                      --stack-name sam-lambda-deploy \
-                     --s3-bucket your-s3-bucket-name \
+                     --s3-bucket pgr301-couch-explorers \
                      --capabilities CAPABILITY_IAM \
                      --region eu-west-1 \
                      --template-file sam_lambda/template.yaml
