@@ -32,9 +32,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1  # Endre til riktig region
 
-      # Bygg SAM-applikasjonen
+      # Bygg SAM-applikasjonen i `sam_lambda`-mappen
       - name: Build SAM application
-        run: sam build --use-container
+        run: sam build --template sam_lambda/template.yaml --use-container
 
       # Deploy SAM-applikasjonen
       - name: Deploy SAM application
@@ -44,4 +44,5 @@ jobs:
                      --stack-name sam-lambda-deploy \
                      --s3-bucket your-s3-bucket-name \
                      --capabilities CAPABILITY_IAM \
-                     --region eu-west-1
+                     --region eu-west-1 \
+                     --template-file sam_lambda/template.yaml
