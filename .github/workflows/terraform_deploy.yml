@@ -6,6 +6,9 @@ on:
       - main
       - "*"
 
+    
+
+
 jobs:
   terraform:
     runs-on: ubuntu-latest
@@ -24,6 +27,11 @@ jobs:
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.9.8
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+        working-directory: ./infra
+
 
       # Configure AWS credentials
       - name: Configure AWS credentials
