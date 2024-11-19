@@ -1,0 +1,22 @@
+# Terraform local files
+.terraform/
+*.tfstate
+*.tfstate.backup
+crash.log
+.terraform.lock.hcl
+
+# Python files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.venv/
+
+# AWS credentials (if present locally)
+*.env
+aws_credentials.json
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+.DS_Store
