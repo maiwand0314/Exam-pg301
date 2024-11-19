@@ -4,13 +4,13 @@ import json
 import random
 import os
 
-# Frank; This is probalby be closer to what we need in production. Let's get funding first!
-
+# Initialize AWS clients
 bedrock_client = boto3.client("bedrock-runtime", region_name="us-east-1")
 s3_client = boto3.client("s3")
 
 MODEL_ID = "amazon.titan-image-generator-v1"
-BUCKET_NAME =  os.environ["BUCKET_NAME"]
+BUCKET_NAME = os.environ["BUCKET_NAME"]
+PATH_PREFIX = os.environ["S3_IMAGE_PATH_PREFIX"]
 
 def lambda_handler(event, context):
     # Loop through all SQS records in the event
@@ -18,7 +18,8 @@ def lambda_handler(event, context):
         # Extract the SQS message body
         prompt = record["body"]
         seed = random.randint(0, 2147483647)
-        s3_image_path = f"images/titan_{seed}.png"
+        s3_image_path = f"{PATH_PREFIX}titan_{seed}.png"
+
         # Prepare the request for image generation
         native_request = {
             "taskType": "TEXT_IMAGE",
@@ -48,5 +49,5 @@ def lambda_handler(event, context):
 
     return {
         "statusCode": 200,
-        "body": json.dumps("")
+        "body": json.dumps("Images successfully uploaded!")
     }
