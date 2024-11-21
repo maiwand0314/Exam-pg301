@@ -40,6 +40,8 @@ jobs:
         run: terraform plan
         working-directory: ./infra
 
+        #hei
+
       # Step 6: Terraform Apply
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
