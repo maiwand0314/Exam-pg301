@@ -1,4 +1,3 @@
-
 variable "region" {
   description = "AWS region for the resources"
   default     = "eu-west-1"

@@ -117,11 +117,10 @@ resource "aws_lambda_function" "image_processor" {
 
   source_code_hash = filebase64sha256("lambda_sqs.zip")
 
-  # Ensure CloudWatch Log Group is created first
   depends_on = [aws_cloudwatch_log_group.lambda_log_group]
 }
 
-# Lambda Event Source Mapping for SQS
+# # Kobler SQS-Queuen til Lambda-funksjonen
 resource "aws_lambda_event_source_mapping" "sqs_to_lambda" {
   event_source_arn = aws_sqs_queue.image_processing_queue.arn
   function_name    = aws_lambda_function.image_processor.arn

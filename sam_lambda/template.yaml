@@ -21,7 +21,7 @@ Resources:
               - Effect: Allow
                 Action:
                   - bedrock:InvokeModel
-                Resource: "*"  # Juster om du ønsker mer spesifikk ressursbegrensning
+                Resource: "*"
 
               # Tillatelse til å laste opp objekter til en spesifikk S3-sti
               - Effect: Allow
