@@ -29,6 +29,7 @@ jobs:
     - name: Build and Push Docker Image
       uses: docker/build-push-action@v4
       with:
-        context: .
+        context: ./java_sqs_client
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/java-sqs-client:latest
+        platforms: linux/amd64,linux/arm64
