@@ -1,22 +1,25 @@
-# Terraform local files
+# Lokale Terraform-filer
 .terraform/
 *.tfstate
 *.tfstate.backup
 crash.log
 .terraform.lock.hcl
 
-# Python files
+# Python-filer
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 *.venv/
 
-# AWS credentials (if present locally)
+# AWS-legitimasjon (hvis lagret lokalt)
 *.env
 aws_credentials.json
 
-# Ignore logs and temporary files
+# Ignorer loggfiler og midlertidige filer
 *.log
 *.tmp
 .DS_Store
+
+# BFG Repo-Cleaner JAR-fil
+bfg-1.14.0.jar
