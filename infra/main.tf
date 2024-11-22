@@ -43,7 +43,7 @@ resource "aws_iam_role" "lambda_role" {
   })
 }
 
-# IAM Policy for Lambda Permissions
+# IAM Policy for Lambda tillatelser
 resource "aws_iam_role_policy" "sqs_lambda_policy" {
   name   = "sqs_lambda_policy"
   role   = aws_iam_role.lambda_role.id

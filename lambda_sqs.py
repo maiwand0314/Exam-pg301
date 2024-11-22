@@ -4,7 +4,7 @@ import json
 import random
 import os
 
-# Initialize AWS clients
+# Initialiserer AWS-klienter for både bedrock og s3
 bedrock_client = boto3.client("bedrock-runtime", region_name="us-east-1")
 s3_client = boto3.client("s3")
 
@@ -13,14 +13,14 @@ BUCKET_NAME = os.environ["BUCKET_NAME"]
 PATH_PREFIX = os.environ["S3_IMAGE_PATH_PREFIX"]
 
 def lambda_handler(event, context):
-    # Loop through all SQS records in the event
+    # Går gjennom alle meldinger fra SQS i eventet
     for record in event["Records"]:
-        # Extract the SQS message body
+        # Henter meldingsinnhold fra SQS
         prompt = record["body"]
         seed = random.randint(0, 2147483647)
         s3_image_path = f"{PATH_PREFIX}titan_{seed}.png"
 
-        # Prepare the request for image generation
+        # Setter opp forespørsel for bildegenerering
         native_request = {
             "taskType": "TEXT_IMAGE",
             "textToImageParams": {"text": prompt},
@@ -34,7 +34,7 @@ def lambda_handler(event, context):
             },
         }
 
-        # Invoke the model
+        # Kaller til Bedrock-modellen for å generere bildet
         response = bedrock_client.invoke_model(
             modelId=MODEL_ID,
             body=json.dumps(native_request)
@@ -44,9 +44,10 @@ def lambda_handler(event, context):
         base64_image_data = model_response["images"][0]
         image_data = base64.b64decode(base64_image_data)
 
-        # Upload the image to S3
+        # Laster opp det genererte bildet til S3
         s3_client.put_object(Bucket=BUCKET_NAME, Key=s3_image_path, Body=image_data)
 
+    # Returnerer statuskode og en suksessmelding
     return {
         "statusCode": 200,
         "body": json.dumps("Images successfully uploaded!")

@@ -17,7 +17,7 @@ Resources:
           PolicyDocument:
             Version: "2012-10-17"
             Statement:
-              # Tillatelse til å bruke Bedrock for bildegenerering
+              # gir Tillatelse til å bruke Bedrock for bildegenerering
               - Effect: Allow
                 Action:
                   - bedrock:InvokeModel
@@ -34,9 +34,9 @@ Resources:
     Properties:
       CodeUri: hello_world/
       Handler: app.lambda_handler
-      Runtime: python3.8  # Eller python3.9, avhengig av runtime
+      Runtime: python3.8
       MemorySize: 512 
-      Timeout: 200  # Juster timeout om nødvendig
+      Timeout: 200
       Environment:
         Variables:
           BUCKET_NAME: "pgr301-couch-explorers"

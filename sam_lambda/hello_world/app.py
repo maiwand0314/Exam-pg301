@@ -5,17 +5,17 @@ import os
 import random
 from botocore.exceptions import BotoCoreError, ClientError
 
-# Initialize AWS clients
+# Initialiserer AWS-klienter
 bedrock_client = boto3.client("bedrock-runtime", region_name="us-east-1")
 s3_client = boto3.client("s3")
 
-# Get bucket name and candidate number from environment variables
+# Henter bøttenavn og kandidatnummer fra miljøvariabler
 bucket_name = os.getenv("BUCKET_NAME")
 candidate_number = os.getenv("CANDIDATE_NUMBER")
 model_id = "amazon.titan-image-generator-v1"
 
 def lambda_handler(event, context):
-    # Extract the prompt from the request body
+    # Leser prompt fra forespørselens kropp
     try:
         body = json.loads(event['body'])
         prompt = body.get("prompt", "")
@@ -24,11 +24,11 @@ def lambda_handler(event, context):
     except (json.JSONDecodeError, ValueError) as e:
         return {"statusCode": 400, "body": json.dumps({"error": str(e)})}
 
-    # Generate a random seed for image generation
+     # lager et tilfeldig seed for bildegenerering
     seed = random.randint(0, 2147483647)
     s3_image_path = f"{candidate_number}/generated_images/titan_{seed}.png"
 
-    # Create the request payload for the Bedrock model
+    # Oppretter forespørselspayload for Bedrock-modellen
     native_request = {
         "taskType": "TEXT_IMAGE",
         "textToImageParams": {"text": prompt},
@@ -42,7 +42,7 @@ def lambda_handler(event, context):
         }
     }
 
-    # Invoke the Bedrock model
+    # Kaller Bedrock-modellen
     try:
         response = bedrock_client.invoke_model(
             modelId=model_id,
@@ -54,13 +54,13 @@ def lambda_handler(event, context):
     except (BotoCoreError, ClientError, KeyError) as error:
         return {"statusCode": 500, "body": json.dumps({"error": str(error)})}
 
-    # Upload the image to S3
+    # Laster opp bildet til S3
     try:
         s3_client.put_object(Bucket=bucket_name, Key=s3_image_path, Body=image_data)
     except (BotoCoreError, ClientError) as error:
         return {"statusCode": 500, "body": json.dumps({"error": str(error)})}
 
-    # Return the S3 URI of the uploaded image
+    # Returnerer S3 URI for det opplastede bildet
     return {
         "statusCode": 200,
         "body": json.dumps({
