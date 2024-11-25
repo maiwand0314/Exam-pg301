@@ -51,7 +51,9 @@ En AWS SQS Queue brukes til å prosessere bildegenereringsjobber.
 2. **Latest-tag for nyeste bilde:**  
    Det nyeste bildet som pushes fra GitHub får taggen `latest`. Dette gjør at det blir enkelt å komme til den nyeste versjonen som eventuelt    er stabil. Resultatet blir da enklere prosess for deploying og testing, siden da trenger man ikke å finne en spesifikk commit-hash, fordi     man bruker nyeste versjon.
 
-### Alt i  alt er dette bra siden det ikke overskriver tidligere versjoner og samtidig så øker det fleksibilitet og sporbarhet for commitene.
+#### Alt i  alt er dette bra siden det ikke overskriver tidligere versjoner og samtidig så øker det fleksibilitet og sporbarhet for commitene.
+
+
 
 ![image](https://github.com/user-attachments/assets/65035a4e-58ff-43e7-a8b3-88c542b267e3)
 ![image](https://github.com/user-attachments/assets/152f9997-bbb1-4d31-a2a8-586966d73d05)
