@@ -20,5 +20,6 @@ variable "s3_image_path_prefix" {
 
 variable "alert_email" {
   description = "E-postadresse som skal motta alarmvarsler"
+  # Endre epostaddresse til din egen 
   default     = "mamo117@student.kristiania.no"
 }
