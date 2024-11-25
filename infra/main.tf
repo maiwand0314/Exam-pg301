@@ -127,3 +127,36 @@ resource "aws_lambda_event_source_mapping" "sqs_to_lambda" {
   batch_size       = 5
   enabled          = true
 }
+
+# CloudWatch-alarm for ApproximateAgeOfOldestMessage
+resource "aws_cloudwatch_metric_alarm" "sqs_age_of_oldest_message" {
+  alarm_name          = "SQS-AgeOfOldestMessage-High"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = 1
+  threshold           = 60 # Angir terskelen for alder (60 sekunder)
+  metric_name         = "ApproximateAgeOfOldestMessage"
+  namespace           = "AWS/SQS"
+  statistic           = "Maximum"
+  period              = 60 # Kontrollerer hver 60 sekund
+  alarm_description   = "Varsel: Den eldste meldingen i køen er eldre enn terskelen."
+
+  # Refererer til SQS-køen
+  dimensions = {
+    QueueName = aws_sqs_queue.image_processing_queue.name
+  }
+
+  # Koble alarmen til SNS-topic
+  alarm_actions = [aws_sns_topic.sqs_alerts_topic.arn]
+}
+
+# Oppretter SNS-topic for varsler
+resource "aws_sns_topic" "sqs_alerts_topic" {
+  name = "sqs-alerts-topic"
+}
+
+# Oppretter abonnement for e-post til SNS-topic
+resource "aws_sns_topic_subscription" "email_subscription" {
+  topic_arn = aws_sns_topic.sqs_alerts_topic.arn
+  protocol  = "email"
+  endpoint  = var.alert_email
+}

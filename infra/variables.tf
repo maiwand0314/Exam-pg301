@@ -17,3 +17,8 @@ variable "s3_image_path_prefix" {
   description = "Prefix path for images in the S3 bucket"
   default     = "21/generated_images/"
 }
+
+variable "alert_email" {
+  description = "E-postadresse som skal motta alarmvarsler"
+  default     = "mamo117@student.kristiania.no"
+}
