@@ -98,8 +98,8 @@ resource "aws_cloudwatch_log_group" "lambda_log_group" {
 }
 
 # Lambda Function
-resource "aws_lambda_function" "image_processor" {
-  function_name = "image-processor"
+resource "aws_lambda_function" "image_processor_devops21" {
+  function_name = "image-processor-devops21"
   filename      = "lambda_sqs.zip"
   handler       = "lambda_sqs.lambda_handler"
   runtime       = "python3.9"
