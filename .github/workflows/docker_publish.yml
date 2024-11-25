@@ -34,4 +34,3 @@ jobs:
         tags: |
           ${{ secrets.DOCKER_USERNAME }}/java-sqs-client:latest
           ${{ secrets.DOCKER_USERNAME }}/java-sqs-client:${{ github.sha }}
-          ${{ secrets.DOCKER_USERNAME }}/java-sqs-client:${{ github.ref_name }}
