@@ -93,7 +93,7 @@ resource "aws_iam_role_policy" "sqs_lambda_policy" {
 
 # CloudWatch Log Group for Lambda
 resource "aws_cloudwatch_log_group" "lambda_log_group" {
-  name              = "/aws/lambda/image-processor"
+  name              = "/aws/lambda/image-processor-devops21"
   retention_in_days = 14
 }
 
@@ -123,7 +123,7 @@ resource "aws_lambda_function" "image_processor_devops21" {
 # # Kobler SQS-Queuen til Lambda-funksjonen
 resource "aws_lambda_event_source_mapping" "sqs_to_lambda" {
   event_source_arn = aws_sqs_queue.image_processing_queue.arn
-  function_name    = aws_lambda_function.image_processor.arn
+  function_name    = aws_lambda_function.image_processor_devops21.arn
   batch_size       = 5
   enabled          = true
 }
