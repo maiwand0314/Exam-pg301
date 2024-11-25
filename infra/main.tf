@@ -19,8 +19,8 @@ provider "aws" {
 }
 
 # SQS Queue
-resource "aws_sqs_queue" "image_processing_queue" {
-  name                        = "image-processing-queue"
+resource "aws_sqs_queue" "image_processing_queue_devops21" {
+  name                        = "image-processing-queue-devops21"
   visibility_timeout_seconds  = 30
   message_retention_seconds   = 86400
 }
@@ -57,7 +57,7 @@ resource "aws_iam_role_policy" "sqs_lambda_policy" {
           "sqs:DeleteMessage",
           "sqs:GetQueueAttributes"
         ]
-        Resource = aws_sqs_queue.image_processing_queue.arn
+        Resource = aws_sqs_queue.image_processing_queue_devops21.arn
       },
       {
         Effect = "Allow"
@@ -122,7 +122,7 @@ resource "aws_lambda_function" "image_processor_devops21" {
 
 # # Kobler SQS-Queuen til Lambda-funksjonen
 resource "aws_lambda_event_source_mapping" "sqs_to_lambda" {
-  event_source_arn = aws_sqs_queue.image_processing_queue.arn
+  event_source_arn = aws_sqs_queue.image_processing_queue_devops21.arn
   function_name    = aws_lambda_function.image_processor_devops21.arn
   batch_size       = 5
   enabled          = true
@@ -142,7 +142,7 @@ resource "aws_cloudwatch_metric_alarm" "sqs_age_of_oldest_message" {
 
   # Refererer til SQS-køen
   dimensions = {
-    QueueName = aws_sqs_queue.image_processing_queue.name
+    QueueName = aws_sqs_queue.image_processing_queue_devops21.name
   }
 
   # Koble alarmen til SNS-topic
