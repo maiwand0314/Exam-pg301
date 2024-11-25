@@ -53,6 +53,10 @@ En AWS SQS Queue brukes til å prosessere bildegenereringsjobber.
 
 # I alt er dette bra siden det ikke overskriver tidligere versjoner og samtidig så øker det fleksibilitet og sporbarhet for commitene.
 
+![image](https://github.com/user-attachments/assets/65035a4e-58ff-43e7-a8b3-88c542b267e3)
+![image](https://github.com/user-attachments/assets/152f9997-bbb1-4d31-a2a8-586966d73d05)
+
+
 - **Docker-repository navn:**  
   `maiwand0314/java-sqs-client`
 
