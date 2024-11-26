@@ -86,8 +86,7 @@ En AWS SQS Queue brukes til å prosessere bildegenereringsjobber.
 
 ---
 
-Oppgave 5 
-
+# Oppgave 5 
 --
 ## 1. Automatisering og kontinuerlig levering (CI/CD): Hvordan påvirker serverless-arkitektur sammenlignet med mikrotjenestearkitektur CI/CD-pipelines, automatisering, og utrullingsstrategier?
 
