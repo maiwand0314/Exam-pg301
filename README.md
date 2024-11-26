@@ -177,4 +177,46 @@ I FaaS-arkitektur som AWS Lambda så kommer det opp spesifikke utfordringer kobl
 
 - Det kan være dårlig for systemer som har varierende trafikk og ikke fast, fordi det fører til overforbruk av de faste ressursene satt til hver tjeneste.
 - Det krever også stort mengde arbeid for å forbedre ressursbruken og kapasiteten.
+  
+---
 
+## 4. Eierskap og ansvar: Hvordan påvirkes DevOps-teamets eierskap og ansvar for applikasjonens ytelse, pålitelighet og kostnader ved overgang til en serverless tilnærming sammenlignet med en mikrotjeneste-tilnærming?
+
+## Serverless Arkitektur
+
+### **Eierskap**
+- **Fordel:** Små teams kan eie og opprettholde egne funksjoner.
+- **Ulempe:** Ansvar økes for design og overvåkning av små funksjoner.
+
+### **Ansvar**
+- **Fordel:** Teamets ansvar reduseres for selve infrastruktur, fordi de slipper å administrere det siden det håndteres av AWS.
+- **Ulempe:** Teamet har mindre kontroll over infrastruktur, som skalering og drift, noe som kan føre til noen utfordringer ved skaleringsproblemer eller begrensninger for ytelse som ikke kan blitt tatt kontroll på direkte.
+
+### **Kostnader**
+- **Fordel:** Du betaler bare for hvert bruk, dette kan mulig gi lave kostnader ved kontroller trafikk.
+- **Ulempe:** Lite produktive funksjoner har en sjanse for å føre til høyere kostnader enn det er forventet.
+
+### **Pålitelighet**
+- AWS har en innebygd tjeneste som gir høy pålitelighet og automatisk overtakelse ved feil, dette fører til pålitelighet uten at et team trenger å passe på det manuelt.
+
+---
+
+## Mikrotjenestearkitektur
+
+### **Eierskap**
+- **Fordel:** Enklere å administrere og feilsøke tjenester, fordi ansvarsområdene er definert godt.
+- **Ulempe:** Det har oftest store komponenter, dette kan føre til at oppdateringer er mer tidskrevende og feil i en liten del kan påvirke hele tjenesten.
+
+### **Ansvar**
+- **Fordel:** Teamet har fullt ansvar over infrastruktur, altså drift, skalering og konfigurering.
+- **Ulempe:** Dette øker arbeid og krever god kunnskap for å sikre bra og optimal ytelse.
+
+### **Kostnader**
+- **Fordel:** Tydelige kostnader ved faste fordelinger av ressurser.
+- **Ulempe:** Ressursene må være tilgjengelige, dette fører til faste kostnader selv under lavt trafikk noe som er veldig unødvendig.
+
+### **Pålitelighet**
+- **Fordel:** Mikrotjenester er bygd opp slik at feil i en tjeneste påvirker stort sett ikke de andre tjenestene.
+- **Ulempe:** Oppsettet av logging og overvåkning kan være komplisert siden det må bli satt opp manuelt og kan kreve et par ressurser (som kan føre til økt kostnader).
+
+### **Kort oppsumert**: serverless arkitektur gjør at Devops-teamet ikke trenger å arbeide med infrastruktur, i tillegg gir det høy pålitelighet med de innebygde tjenestene det har, men det har noen utfordringer som foreksempel at det kan komme uforventede kostnader og trengs godt samarbeid. Miktrojenestearkitektur derimot, gjør at Devops-teamet har større kontroll over infrastruktur som da fører til gode klare anvarsområder. Men, mikrotjenestearkitektur krever mer arbeid for å forbedre infrastruktur, i tillegg kan det bli dyrt hvis det er dårlig ressursoppsett og utnyttelse.
