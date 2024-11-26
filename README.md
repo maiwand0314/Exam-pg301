@@ -56,7 +56,7 @@ En AWS SQS Queue brukes til å prosessere bildegenereringsjobber.
 ## Jeg har valgt en to-delt tagge strategi
 
 1. **Unike commit-baserte tagger:**  
-   Jeg bruker tag `github.sha` for å lage en unik med en kort commit hash, som sikrer at hver commit har et unikt bilde. Dette gjør at alle     commitsene får sitt eget sporbart og unik bilde, noe som spesielt er bra for testing, debugging og rollback til en spesifikk bestemt funksjon
+   Jeg bruker tag `github.sha` for å lage et unikt bilde med en kort commit hash, som sikrer at hver commit har et unikt bilde. Dette gjør at alle commitsene får sitt eget sporbart og unik bilde, noe som spesielt er bra for testing, debugging og rollback til en spesifikk bestemt funksjon
 
 2. **Latest-tag for nyeste bilde:**  
    Det nyeste bildet som pushes fra GitHub får taggen `latest`. Dette gjør at det blir enkelt å komme til den nyeste versjonen som eventuelt    er stabil. Resultatet blir da enklere prosess for deploying og testing, siden da trenger man ikke å finne en spesifikk commit-hash, fordi     man bruker nyeste versjon.
