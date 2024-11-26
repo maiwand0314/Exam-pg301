@@ -63,11 +63,6 @@ En AWS SQS Queue brukes til å prosessere bildegenereringsjobber.
 
 #### Alt i  alt er dette bra siden det ikke overskriver tidligere versjoner og samtidig så øker det fleksibilitet og sporbarhet for commitene.
 
-## Bilde fra cloudwatch: container-image
-
-![image](https://github.com/user-attachments/assets/65035a4e-58ff-43e7-a8b3-88c542b267e3)
-![image](https://github.com/user-attachments/assets/152f9997-bbb1-4d31-a2a8-586966d73d05)
-
 
 - **Docker-repository navn:**  
   `maiwand0314/java-sqs-client`
@@ -83,6 +78,16 @@ En AWS SQS Queue brukes til å prosessere bildegenereringsjobber.
 
 - **Python-versjon:**  
   Koden er utviklet for Python 3.8. Hvis du bruker en annen versjon av Python, så må koden tilpasses i `template.yaml`.
+
+---
+
+#Oppgave 4
+
+## Bilde fra cloudwatch for alarm:
+
+![image](https://github.com/user-attachments/assets/65035a4e-58ff-43e7-a8b3-88c542b267e3)
+![image](https://github.com/user-attachments/assets/152f9997-bbb1-4d31-a2a8-586966d73d05)
+
 
 ---
 
