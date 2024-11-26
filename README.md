@@ -124,7 +124,7 @@ En AWS SQS Queue brukes til å prosessere bildegenereringsjobber.
 
 ---
 
-## Kort Oppsummert
+#### Kort Oppsummert
 
 Serverless arkitektur gir automatisert skalering og ikke minst fleksibilitet, men det krever mange pipelines og flere utfordrende tester. Imens Mikrotjeneste arkitektur er enklere å teste og administrere, men er mindre fleksible ved oppdateringer som er små.
 ---
@@ -135,5 +135,45 @@ Når man har en overgang fra mikrotjenester til serverless arkitektur så blir o
 
 I FaaS-arkitektur som AWS Lambda så kommer det opp spesifikke utfordringer koblet til observability, dette skjer fordi som sagt tidligere så er systemet er delt opp i små og korte funksjoner. Loggingen er spredt mellom funksjoner, noe som gjør det mer komplisert å samle og analysere data. Arbeidsflyter kobles også via tjenester som SQS og dette krever da X-ray for sporing av systemet. FaaS-systemer er dessuten event-drevne, noe som kan gjøre det vanskelig å oppdage problemer med ytelse. Spesialtilpassede verktøy kreves i dette tilfellet for å samle alle logger og også å spore data gjennom systemet.
 
+---
 
+## 3. Skalerbarhet og kostnadskontroll: Diskuter fordeler og ulemper med tanke på skalerbarhet, ressursutnyttelse, og kostnadsoptimalisering i en serverless kontra mikrotjenestebasert arkitektur.
+
+# Serverless Arkitektur
+
+## Fordeler
+
+### Skalerbarhet
+- Ved trafikkøkning så skalerer AWS Lambda automatisk, basert på antall forespørsler. Det forenkler håndtering av brå økninger i trafikken uten å trenge manuell betjening.
+
+### Ressursutnyttelse
+- Ved serverless arkitektur er det veldig effektiv ressursbruk, fordi funksjonene som blir laget kjøres kun når de trengs, i tillegg blir ressursene bare brukt under gjennomføring.
+
+### Kostnadsoptimalisering
+- Du må bare kunne betale for de virkelige kjøretidene og de antall forespørslene, noe som gjør kostnaden gunstig for systemer med uventet trafikk.
+
+## Ulemper
+
+- Ved veldig mange kjøringer eller lange funksjoner kan kostnadene bli høye.
+- Begrensninger i ressursbruk og kjøretid hver funksjon kan føre til at det kreves å dele opp arbeidsflyter.
+
+---
+
+# Mikrotjenestearkitektur
+
+## Fordeler
+
+### Skalerbarhet
+- Skalering av mikrotjenester krever mer innsats siden det skjer manuelt eller via verktøy som for eksempel Kubernetes. Men, det fører til økt kontroll over skaleringen.
+
+### Ressursutnyttelse
+- Siden det er mer kontroll over skalering, så er det også mulig å begrense eller sette sammen ressursbruken selv basert på det tjenesten trenger.
+
+### Kostnadsoptimalisering
+- Mikrotjenester er forutsigbart fordi ressursbruken kan budsjetteres og planlegges, noe som gir kontrollerte kostnader.
+
+## Ulemper
+
+- Det kan være dårlig for systemer som har varierende trafikk og ikke fast, fordi det fører til overforbruk av de faste ressursene satt til hver tjeneste.
+- Det krever også stort mengde arbeid for å forbedre ressursbruken og kapasiteten.
 
