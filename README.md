@@ -126,7 +126,8 @@ En AWS SQS Queue brukes til å prosessere bildegenereringsjobber.
 
 #### Kort Oppsummert
 
-Serverless arkitektur gir automatisert skalering og ikke minst fleksibilitet, men det krever mange pipelines og flere utfordrende tester. Imens Mikrotjeneste arkitektur er enklere å teste og administrere, men er mindre fleksible ved oppdateringer som er små.
+Serverless arkitektur gir automatisert skalering og ikke minst fleksibilitet, men det krever mange pipelines og flere utfordrende tester. Imens Miktrotjeneste arkitektur er enklere å teste og administrere, men er mindre fleksible ved oppdateringer som er små.
+
 ---
 
 ## 2. Observability (overvåkning): Hvordan endres overvåkning, logging og feilsøking når man går fra mikrotjenester til en serverless arkitektur? Hvilke utfordringer er spesifikke for observability i en FaaS-arkitektur?
