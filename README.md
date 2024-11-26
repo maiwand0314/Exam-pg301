@@ -75,6 +75,58 @@ En AWS SQS Queue brukes til å prosessere bildegenereringsjobber.
 
 ---
 
+#Oppgave 5 
+--
+## 1. Automatisering og kontinuerlig levering (CI/CD): Hvordan påvirker serverless-arkitektur sammenlignet med mikrotjenestearkitektur CI/CD-pipelines, automatisering, og utrullingsstrategier?
+
+## Serverless Arkitektur
+
+### Fordeler
+
+- **Granulære CI/CD pipelines:**  
+  En serverless arkitektur funker på en måte hvor arkitekturen brytes ned til små funksjoner, disse isolerte funksjonene håndterer spesifikt en oppgave. Resultatet av det blir da at det fører til høyere antall komponenter som har sine egne uavhengige livssykluser. 
+
+- **Utrullingsstrategier:**  
+  Hos AWS lambda så blir det tilbydd avanserte strategier, disse gjør at risikoen ved utrulling blir redusert. Eksempler på strategier er Gradual Rollouts og Canary Releases.
+
+- **Verktøy for automatisering:**  
+  AWS SAM og Serverless Framework hjelper med å builde, teste og distribuere funksjoner raskt og effektivt. 
+
+- **Automatisk ressursstyring:**  
+  Ved forespørsel så utvides Lambda funksjoner automatisk. Dette fører til at CI/CD-prosessene blir forenklet fordi det fjerner behovet for manuell ressursadministrasjon.
+
+### Svakheter
+
+- Noen svakheter ved dette er at det forekommer kompleksitet i pipelinene, de små funksjonene som blir laget krever sine egne CI/CD pipelines, å behandle de krever optimaliserte verktøy, i tillegg kreves det ekstra arbeid og tid.
+
+- For det andre kreves det veldig mange integrasjonstester for å sikre kommunikasjonen mellom komponentene siden eventdrevne arkitekturer bruker message-Queues som SQS.
+
+---
+
+## Mikrotjenestearkitektur
+
+### Fordeler
+
+- **Enklere CI/CD:**  
+  Mikrotjenester er større og sammenhengende tjenester som fordeles som enhet. Dette betyr færre pipelines, og prosessen til dette kan standardiserer med verktøy som Docker og Kubernetes.
+
+- **Utrullingsstrategier:**  
+  Blue/Green Deployment og Rolling updates er noen metoder som gir sikkerhet og stabilitet under oppdateringer.
+
+- **Sentralisert Testing:**  
+  Det er mer oversiktlig å teste større tjenester i forhold til å teste små komponenter.
+
+### Ulemper
+
+- Noen ulemper er at oppdatering av en del av tjenesten krever distribusjonen av hele tjenesten.
+
+- For det andre så krever det ekstra tilpasning siden mikrotjenester enten containerbasert eller manuell ressursadministrasjon.
+
+---
+
+## Kort Oppsummert
+
+Serverless arkitektur gir automatisert skalering og ikke minst fleksibilitet, men det krever mange pipelines og flere utfordrende tester. Imens Mikrotjeneste arkitektur er enklere å teste og administrere, men er mindre fleksible ved oppdateringer som er små.
 
 
 
