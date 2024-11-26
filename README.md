@@ -7,6 +7,7 @@ En API-endpoint for å generere bilder.
 
 - **Endpoint:**  
   [Generate Image](https://1a7l90a5n9.execute-api.eu-west-1.amazonaws.com/Prod/generate-image)
+  https://1a7l90a5n9.execute-api.eu-west-1.amazonaws.com/Prod/generate-image
 
 ---
 
@@ -16,6 +17,7 @@ GitHub Actions brukes for å bygge og publisere Docker-bilder automatisk.
 
 - **Workflow Run:**  
   [Build and Publish Job](https://github.com/maiwand0314/Exam-pg301/actions/runs/12015586624/job/33493965915)
+  https://github.com/maiwand0314/Exam-pg301/actions/runs/12015586624/job/33493965915
 
 ---
 
@@ -25,9 +27,11 @@ GitHub Actions workflows kjøres automatisk for forskjellige branches:
 
 - **Main Branch Workflow:**  
   [Workflow Run - Main](https://github.com/maiwand0314/Exam-pg301/actions/runs/11957238737/job/33334129088)
+  https://github.com/maiwand0314/Exam-pg301/actions/runs/11957238737/job/33334129088
 
 - **tfBranch Workflow:**  
   [Workflow Run - tfBranch](https://github.com/maiwand0314/Exam-pg301/actions/runs/11957189134/job/33333731841)
+  https://github.com/maiwand0314/Exam-pg301/actions/runs/11957189134/job/33333731841
 
 ### SQS Queue for bildekø
 
@@ -35,6 +39,7 @@ En AWS SQS Queue brukes til å prosessere bildegenereringsjobber.
 
 - **SQS Queue URL:**  
   [Image Processing Queue](https://sqs.eu-west-1.amazonaws.com/244530008913/image-processing-queue-devops21)
+  https://sqs.eu-west-1.amazonaws.com/244530008913/image-processing-queue-devops21
 
 ---
 
@@ -64,11 +69,11 @@ En AWS SQS Queue brukes til å prosessere bildegenereringsjobber.
 
 - **SQS Queue URL:**  
   [Image Processing Queue](https://sqs.eu-west-1.amazonaws.com/244530008913/image-processing-queue-devops21)
+  https://sqs.eu-west-1.amazonaws.com/244530008913/image-processing-queue-devops21
 
-  
 ---
 
-## Teknisk notat
+## notat
 
 - **Python-versjon:**  
   Koden er utviklet for Python 3.8. Hvis du bruker en annen versjon av Python, så må koden tilpasses i `template.yaml`.
