@@ -151,7 +151,7 @@ I FaaS-arkitektur som AWS Lambda så kommer det opp spesifikke utfordringer kobl
 
 ## 3. Skalerbarhet og kostnadskontroll: Diskuter fordeler og ulemper med tanke på skalerbarhet, ressursutnyttelse, og kostnadsoptimalisering i en serverless kontra mikrotjenestebasert arkitektur.
 
-# Serverless Arkitektur
+## Serverless Arkitektur
 
 ## Fordeler
 
@@ -171,7 +171,7 @@ I FaaS-arkitektur som AWS Lambda så kommer det opp spesifikke utfordringer kobl
 
 ---
 
-# Mikrotjenestearkitektur
+## Mikrotjenestearkitektur
 
 ## Fordeler
 
