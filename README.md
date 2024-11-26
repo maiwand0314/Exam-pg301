@@ -127,6 +127,13 @@ En AWS SQS Queue brukes til å prosessere bildegenereringsjobber.
 ## Kort Oppsummert
 
 Serverless arkitektur gir automatisert skalering og ikke minst fleksibilitet, men det krever mange pipelines og flere utfordrende tester. Imens Mikrotjeneste arkitektur er enklere å teste og administrere, men er mindre fleksible ved oppdateringer som er små.
+---
+
+## 2. Observability (overvåkning): Hvordan endres overvåkning, logging og feilsøking når man går fra mikrotjenester til en serverless arkitektur? Hvilke utfordringer er spesifikke for observability i en FaaS-arkitektur?
+
+Når man har en overgang fra mikrotjenester til serverless arkitektur så blir overvåkning, logging og feilsøking mer komplisert, fordi systemet blir brytet ned til mange små og korte funksjoner. Det er enklere å overvåke og logge, fordi det er større tjenester som kjører kontinuerlig og gir oversiktlig bilde. I forhold til dette så må man håndtere splittede logger fra mange ulike funksjoner og spore arbeidsflytene mellom ulike tjenester som AWS Lambda og SQS. AWS CloudWatch og X-ray er et par verktøy som hjelper med feilsøking, men det krever mer komplekse teknikker for å sammenligne data og forstå systemets tilstand helhetlig.
+
+I FaaS-arkitektur som AWS Lambda så kommer det opp spesifikke utfordringer koblet til observability, dette skjer fordi som sagt tidligere så er systemet er delt opp i små og korte funksjoner. Loggingen er spredt mellom funksjoner, noe som gjør det mer komplisert å samle og analysere data. Arbeidsflyter kobles også via tjenester som SQS og dette krever da X-ray for sporing av systemet. FaaS-systemer er dessuten event-drevne, noe som kan gjøre det vanskelig å oppdage problemer med ytelse. Spesialtilpassede verktøy kreves i dette tilfellet for å samle alle logger og også å spore data gjennom systemet.
 
 
 
