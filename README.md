@@ -81,7 +81,7 @@ En AWS SQS Queue brukes til å prosessere bildegenereringsjobber.
 
 ---
 
-#Oppgave 4
+# Oppgave 4
 
 ## Bilde fra cloudwatch for alarm:
 
