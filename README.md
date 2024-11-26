@@ -28,14 +28,14 @@ GitHub Actions brukes for å bygge og publisere Docker-bilder automatisk.
 GitHub Actions workflows kjøres automatisk for forskjellige branches:
 
 - **Main Branch Workflow:**  
-  [Workflow Run - Main](https://github.com/maiwand0314/Exam-pg301/actions/runs/11957238737/job/33334129088)
-  
-  https://github.com/maiwand0314/Exam-pg301/actions/runs/11957238737/job/33334129088
+  [Workflow Run - Main](https://github.com/maiwand0314/Exam-pg301/actions/runs/12025919552/job/33523887072)
 
-- **tfBranch Workflow:**  
-  [Workflow Run - tfBranch](https://github.com/maiwand0314/Exam-pg301/actions/runs/11957189134/job/33333731841)
+  https://github.com/maiwand0314/Exam-pg301/actions/runs/12025919552/job/33523887072
   
-  https://github.com/maiwand0314/Exam-pg301/actions/runs/11957189134/job/33333731841
+- **tfBranch Workflow:**  
+  [Workflow Run - tfBranch](https://github.com/maiwand0314/Exam-pg301/actions/runs/12026006293/job/33524129580)
+
+  https://github.com/maiwand0314/Exam-pg301/actions/runs/12026006293/job/33524129580
 
 ### SQS Queue for bildekø
 
